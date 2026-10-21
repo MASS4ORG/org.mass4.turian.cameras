@@ -1,0 +1,27 @@
+{
+  "id": "org.mass4.turian.cameras",
+  "version": "1.0.2",
+  "displayName": "Camera Rigs",
+  "description": "Follow, orbit, free-fly and first-person camera components.",
+  "author": "MASS4",
+  "license": "MIT",
+  "exclude": [
+    ".github",
+    ".gitignore",
+    ".script-*.py",
+    ".script-*.cs",
+    ".script-*.sh"
+  ],
+  "dependencies": {},
+  "categories": [
+    "turian:gameplay"
+  ],
+  "keywords": [
+    "camera"
+  ],
+  "roles": {
+    "precast": "Brick~/Precast",
+    "bake": "Brick~/Bake"
+  },
+  "bake": "auto"
+}

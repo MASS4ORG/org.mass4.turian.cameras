@@ -1,0 +1,17 @@
+# Changelog
+
+## [1.0.2] - 2026-10-22
+
+- Added: Bricks v2 roles and baked twin workflow.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this brick adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## [1.0.1]
+
+- The packed brick leaves out its tests and CI configuration.
+
+## [1.0.0]
+
+- First commit

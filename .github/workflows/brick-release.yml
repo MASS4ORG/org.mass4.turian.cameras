@@ -1,0 +1,12 @@
+name: Release brick
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    uses: MASS4ORG/action-brick-release/.github/workflows/release.yml@v1
