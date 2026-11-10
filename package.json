@@ -5,23 +5,20 @@
   "description": "Follow, orbit, free-fly and first-person camera components.",
   "author": "MASS4",
   "license": "MIT",
-  "exclude": [
-    ".github",
-    ".gitignore",
-    ".script-*.py",
-    ".script-*.cs",
-    ".script-*.sh"
-  ],
-  "dependencies": {},
-  "categories": [
-    "turian:gameplay"
-  ],
-  "keywords": [
-    "camera"
-  ],
+  "categories": ["turian:gameplay"],
+  "keywords": ["camera"],
   "roles": {
     "precast": "Brick~/Precast",
     "bake": "Brick~/Bake"
   },
+  "exclude": [
+    ".github",
+    ".gitignore",
+    ".local",
+    ".script-*.py",
+    ".script-*.cs",
+    ".script-*.sh",
+    ".script-*.ps1"
+  ],
   "bake": "auto"
 }
