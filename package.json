@@ -1,6 +1,6 @@
 {
   "id": "org.mass4.turian.cameras",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "displayName": "Camera Rigs",
   "description": "Follow, orbit, free-fly and first-person camera components.",
   "author": "MASS4",

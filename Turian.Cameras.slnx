@@ -1,0 +1,4 @@
+<Solution>
+    <Project Path="Brick~/Source/Turian.Cameras/Turian.Cameras.csproj"/>
+    <Project Path="Brick~/Tests/Turian.Cameras.Tests/Turian.Cameras.Tests.csproj"/>
+</Solution>

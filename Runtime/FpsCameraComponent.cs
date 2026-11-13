@@ -31,19 +31,26 @@ public class FpsCameraComponent : Component
     /// <inheritdoc/>
     public override void OnUpdate(float deltaTime)
     {
-        if (!CaptureInput || InputSource is not { } input) return;
+        if (!CaptureInput || InputSource is not { } input)
+        {
+            return;
+        }
 
         var forward = Axis(Key.W, Key.S);
         var strafe = Axis(Key.D, Key.A);
         var climb = Axis(Key.Space, Key.ShiftLeft);
         if (forward != 0f || strafe != 0f || climb != 0f)
+        {
             Move(new Vector3(strafe, climb, forward), deltaTime);
+        }
 
         if (input.IsMouseButtonDown(MouseButton.Right))
         {
             var delta = input.MouseDelta;
             if (delta != Vector2.Zero)
+            {
                 Look(delta.X, delta.Y);
+            }
         }
 
         float Axis(Key positive, Key negative) =>
@@ -57,15 +64,22 @@ public class FpsCameraComponent : Component
     public void Move(Vector3 input, float deltaTime)
     {
         var camera = Node?.GetComponent<CameraComponent>();
-        if (camera is null) return;
+        if (camera is null)
+        {
+            return;
+        }
 
         var forwardXz = new Vector3(camera.Front.X, 0f, camera.Front.Z);
         if (forwardXz.LengthSquared() > 0f)
+        {
             forwardXz = Vector3.Normalize(forwardXz);
+        }
 
         var rightXz = new Vector3(camera.Right.X, 0f, camera.Right.Z);
         if (rightXz.LengthSquared() > 0f)
+        {
             rightXz = Vector3.Normalize(rightXz);
+        }
 
         var step = Speed * deltaTime;
         camera.Position += rightXz * input.X * step;
@@ -77,7 +91,10 @@ public class FpsCameraComponent : Component
     public void Look(float dxPixels, float dyPixels)
     {
         var camera = Node?.GetComponent<CameraComponent>();
-        if (camera is null) return;
+        if (camera is null)
+        {
+            return;
+        }
 
         camera.Yaw += dxPixels * LookSensitivity;
         camera.Pitch -= dyPixels * LookSensitivity;

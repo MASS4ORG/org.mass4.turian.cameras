@@ -23,7 +23,10 @@ public class FreeFlyCameraComponent : Component
     public void Move(Vector3 input, float deltaTime)
     {
         var camera = Node?.GetComponent<CameraComponent>();
-        if (camera is null) return;
+        if (camera is null)
+        {
+            return;
+        }
 
         var step = Speed * deltaTime;
         camera.Position += camera.Right * input.X * step;
@@ -38,7 +41,10 @@ public class FreeFlyCameraComponent : Component
     public void Look(float dxPixels, float dyPixels)
     {
         var camera = Node?.GetComponent<CameraComponent>();
-        if (camera is null) return;
+        if (camera is null)
+        {
+            return;
+        }
 
         camera.Yaw += dxPixels * LookSensitivity;
         camera.Pitch -= dyPixels * LookSensitivity;

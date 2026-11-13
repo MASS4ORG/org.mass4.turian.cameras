@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
+        <IsTestProject>true</IsTestProject>
+        <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
+        <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <DisableMSBuildAssemblyCopyCheck>true</DisableMSBuildAssemblyCopyCheck>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="../../Source/Turian.Cameras/Turian.Cameras.csproj"/>
+        <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.12.0"/>
+        <PackageReference Include="xunit.v3" Version="4.0.2"/>
+        <Using Include="System.Numerics"/>
+        <Using Include="Turian.Cameras"/>
+        <Using Include="Turian.Engine.Core"/>
+        <Using Include="Xunit"/>
+    </ItemGroup>
+</Project>

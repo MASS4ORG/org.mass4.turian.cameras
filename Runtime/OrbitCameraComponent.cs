@@ -1,9 +1,8 @@
 namespace Turian.Cameras;
 
 /// <summary>
-/// Orbits the camera around a fixed point at a fixed distance. Mouse deltas update yaw/pitch and
-/// the camera position is recomputed each call so it remains <see cref="Distance"/> units behind
-/// <see cref="Target"/> along the camera's Front axis.
+/// Orbits a node or world-space point at a fixed distance along the camera's Front axis.
+/// Mouse deltas update yaw and pitch; a node target is tracked every late update.
 /// </summary>
 [RequireComponent(typeof(CameraComponent))]
 [DisallowMultipleComponent]
@@ -12,6 +11,9 @@ public class OrbitCameraComponent : Component
 {
     /// <summary>World-space point the camera orbits around.</summary>
     public Vector3 Target { get; set; }
+
+    /// <summary>Optional node to orbit; its world position plus <see cref="Target"/> is the orbit centre.</summary>
+    public Node? TargetNode { get; set; }
 
     /// <summary>Distance from <see cref="Target"/> along the camera's Front axis.</summary>
     public float Distance
@@ -30,7 +32,10 @@ public class OrbitCameraComponent : Component
     public void Orbit(float dxPixels, float dyPixels)
     {
         var camera = Node?.GetComponent<CameraComponent>();
-        if (camera is null) return;
+        if (camera is null)
+        {
+            return;
+        }
 
         camera.Yaw += dxPixels * LookSensitivity;
         camera.Pitch -= dyPixels * LookSensitivity;
@@ -42,19 +47,30 @@ public class OrbitCameraComponent : Component
     {
         Distance -= scrollDelta * ZoomStep;
         var camera = Node?.GetComponent<CameraComponent>();
-        if (camera is not null) SnapToOrbit(camera);
+        if (camera is not null)
+        {
+            SnapToOrbit(camera);
+        }
     }
 
     /// <inheritdoc/>
     public override void OnLateUpdate(float deltaTime)
     {
-        // Re-snap each frame so external Target changes (e.g. follow a moving point) are tracked.
         var camera = Node?.GetComponent<CameraComponent>();
-        if (camera is not null) SnapToOrbit(camera);
+        if (camera is not null)
+        {
+            SnapToOrbit(camera);
+        }
     }
 
     void SnapToOrbit(CameraComponent camera)
     {
-        camera.Position = Target - camera.Front * Distance;
+        if (TargetNode is { IsDestroyed: true })
+        {
+            return;
+        }
+
+        var centre = Target + (TargetNode?.GlobalTransform.Position ?? Vector3.Zero);
+        camera.Position = centre - camera.Front * Distance;
     }
 }

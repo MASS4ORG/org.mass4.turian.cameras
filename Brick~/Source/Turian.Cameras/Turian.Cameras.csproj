@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="$(TurianDir)Turian/Engine/Core/Turian.Engine.Core.csproj"/>
+        <Compile Include="../../../Runtime/**/*.cs"/>
+    </ItemGroup>
+</Project>
