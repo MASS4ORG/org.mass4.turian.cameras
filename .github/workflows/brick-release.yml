@@ -13,3 +13,5 @@ jobs:
     secrets:
       BRICKS_SIGNING_KEY: ${{ secrets.BRICKS_SIGNING_KEY }}
       BRICKS_STORE_ACCESS_TOKEN: ${{ secrets.BRICKS_STORE_ACCESS_TOKEN }}
+    with:
+      source-tests: Brick~/Tests/Turian.Cameras.Tests/Turian.Cameras.Tests.csproj

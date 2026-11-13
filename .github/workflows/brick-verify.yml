@@ -12,3 +12,5 @@ permissions:
 jobs:
   brick:
     uses: MASS4ORG/brick-workflows/.github/workflows/verify.yml@v1
+    with:
+      source-tests: Brick~/Tests/Turian.Cameras.Tests/Turian.Cameras.Tests.csproj

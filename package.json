@@ -8,10 +8,14 @@
   "categories": ["turian:gameplay"],
   "keywords": ["camera"],
   "roles": {
+    "source": "Brick~/Source",
+    "tests": "Brick~/Tests",
     "precast": "Brick~/Precast",
     "bake": "Brick~/Bake"
   },
   "exclude": [
+    "Brick~/Tests",
+    "Brick~/Turian.Cameras.slnx",
     ".github",
     ".gitignore",
     ".local",
